@@ -1,0 +1,33 @@
+   <h4 class="text-center bg-light text-dark p-1" style="font-family: Charlemagne Std;border:1px ridge white;border-radius: 7px">The Ladder of knowledge</h4>
+   <ul class="list-group">
+   <table>
+   	<thead>
+   		<tr>
+   		<th>#IP</th>
+   		<th>Total Scores</th>
+   		<th>Name</th>
+   		</tr>
+   	</thead>
+   	<tbody>
+   		<?php 
+         
+   		while($each = $lq->fetch_assoc()){
+   		$allip = $each['ip'];
+   		$sps = "SELECT * FROM score WHERE ip='$allip' ORDER BY Score desc";
+   		$spsq = $conn->query($sps);
+   		if($spsq->num_rows>0){
+         $scoe=0;
+         while($sco = $spsq->fetch_assoc()){
+               $scoe += $sco['Score'];
+         }
+   	?>
+   		<tr style="background-color: <?php echo ($each['ip']==$ip)?'wheat':null; ?>">
+	   		<td><?php echo $each['ip']; ?></td>
+	   		<td><?php echo $scoe; ?></td>
+	   		<td><?php echo $each['name']; ?></td>
+   		</tr>
+   		<?php }} ?>
+   	</tbody>
+   </table>
+ 	
+</div>

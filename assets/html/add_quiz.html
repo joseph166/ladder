@@ -1,0 +1,36 @@
+		<form action="index.php?section=Add_quiz" method="POST" class="form form-group">
+			<div class="m-2 p-1">
+			<label>Question</label>
+			<input type="text" placeholder="What is going on?" class="form-control" name="qus">
+			<label>Solution</label>
+			<input type="text" class="form-control" placeholder="Type in the correct answer" name="sol">
+			<label>Wrong 1</label>
+			<input type="text" class="form-control" placeholder="The wrong answer goes here." name="wr1">
+			<label>Wrong 2</label>
+			<input type="text" class="form-control" placeholder="The wrong answer goes here." name="wr2">
+			<label>Wrong 3</label>
+			<input type="text" class="form-control" placeholder="The wrong answer goes here." name="wr3">
+			<label>Type</label>
+			<input type="text" placeholder="Type in the categories" class="form-control" name="type"><br>
+			<button name="add" class="btn btn-success bold">Add Question</button>
+			</div>
+			<?php if(isset($_SESSION['quizerr'])){ ?><div class="text-center alert-dark"><?php echo $_SESSION['quizerr'];?></div>
+			<?php } ?>
+			<hr>
+		</form>
+		<ul class="list-group mb-1">
+			<?php 
+				$sll = "SELECT * FROM question ORDER BY Qid desc";
+				$ski = $conn->query($sll);
+				if($ski->num_rows > 0){
+					while($qs = $ski->fetch_assoc()){
+			?>
+			<li class="list-group-item list-group-item-action">
+				<form action="index.php?section=Add_quiz" method="POST">
+				<?php echo "<span class='text-success'>".$qs['question']."</span> Answer: <span class='text-primary'>".$qs['Correct_a']."</span>";?><br>
+				<input type="hidden" name="iq" value="<?php echo $qs['Qid'];?>">
+				<button name='rem' class="btn btn-danger btn-sm">Remove</button><?php echo "<small class='m-2'>Type: <u>".$qs['type']."</u></small>";?>
+				</form>
+			</li>
+			<?php } }else{echo "<li class='list-group-item list-group-item-action'>No question is found</li>";} ?>
+		</ul>

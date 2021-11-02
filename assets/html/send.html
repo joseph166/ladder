@@ -1,0 +1,39 @@
+<?php
+    if(!empty($_SESSION['senderr'])){
+       echo "<h4 class='text-center p-1 mt-1 alert-danger'>".$_SESSION['senderr']."</h4>"; 
+    }else{
+      echo "<h4 class='text-center p-1 alert-info'>Send message</h4>";
+    }
+?>
+      <form method="POST" action="index.php?section=SendEmail" class="form form-group">
+      	<label for="rec">Recepent</label>
+      	<input class="form-control" minlength="1" maxlength="100" placeholder="#0000" style="width: 160px" type="text" id="rec" name="rec">
+      	<hr>
+      	<textarea name="msg" class="form-control mb-2" placeholder="Your message here..."></textarea>
+        <button name="send" class="btn btn-light">Send</button>
+      </form><hr>
+      <button class='btn form-control showsent mb-1 btn-light'>Read</button>
+        <ul id="sent" class="list-group">
+<?php 
+    function showsent($conn,$ip){
+      $ss = "SELECT * FROM message WHERE sender='$ip' ORDER BY Mid desc";
+      $q = $conn->query($ss);
+      if($q->num_rows > 0){
+        while($a = $q->fetch_assoc()){
+?>
+<li class='list-group-item list-group-item-warning mb-4'>To: <?php echo $a['receiver'];?>
+  <form method="POST" action="index.php?section=SendEmail">
+  <div class='hide'><?php echo $a['message']; ?></div>
+  <input type="hidden" name="senderIp" value="<?php echo $a['Mid'];?>">
+  <button class="btn btn-sm btn-danger" style="float: right;" name="delete_sent">Delete</button>
+    <small class='sentDate m-1'><?php echo $a['sent_date']; ?></small>
+  </form>
+</li>
+<?php
+    } 
+        }else{
+        $_SESSION['li_msg']="<li class='list-group-item list-group-item-info'>No messages</li>";
+      }
+    } 
+?>
+        </ul>

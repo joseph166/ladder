@@ -1,0 +1,42 @@
+.text-center{
+    font-weight: bold
+}
+.btn-light{
+    color:green;
+    background-color: wheat;
+    border-color:wheat;
+    font-weight: bold;
+}
+.card{
+    padding: 10px;
+    margin: 4%;
+    max-height: 80%;
+}
+#op{
+    width: 50%;
+    margin: auto;
+    padding: 1px;
+}
+.ch{
+    background-color: #ffeb44;
+    border: 1.4px ridge #ffee31;
+    border-radius: 10px;
+    padding: 2px;
+}
+.main{
+    border-radius: 15px;
+}
+.custom-select{
+    margin:2px 0px 5px 100px;
+    padding: 1px;
+    float:center;
+    border: 1px outset #a2e28a;
+}
+.center{
+    margin: auto;
+    max-width: 100%;
+    padding: 2px;
+}
+.list-group-item{
+    font-weight: bold
+}

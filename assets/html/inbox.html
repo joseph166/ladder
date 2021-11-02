@@ -1,0 +1,27 @@
+    <h4 class="mt-5 text-center text-light h4" style="text-shadow: 2px 2px 4px #000000;">Inbox</h4>
+        <ul class="list-group">
+             <?php 
+            if($y->num_rows > 0){
+              $_SESSION['inbox']='';
+              while($mes=$y->fetch_assoc()){
+                $sender = $mes['sender'];
+                $mid = $mes['Mid'];
+                $m= $mes['message'];
+                $query = "SELECT name,lname FROM user WHERE ip='$sender'";
+                $sq = $conn->query($query);
+                $arr = mysqli_fetch_array($sq);
+              ?>
+              <li class="list-group-item list-group-item-action list-group-item-light">
+                <?php echo "<b>".$arr['name'].' '.$arr['lname']."</b>";?>
+                <small><?php echo $mes['sent_date'];?></small>
+                <form method="POST" action="index.php?section=Inbox">
+                <input type="hidden" name="mes" value="<?php echo $m;?>">
+                <button name="read" class="btn btn-info btn-sm">Read</button>
+                <input type="hidden" value="<?php echo $mid; ?>" name="del_Inbox">
+                <button name="submit_inbox" class="btn btn-danger btn-sm">Remove</button>  
+                </form>
+                <?php }}else{echo "<li class='list-group-item list-group-item-action list-group-item-success'>Your Inbox is empty</li>"; } ?>
+              </li>
+        </ul>
+                  
+           

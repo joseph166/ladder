@@ -1,0 +1,47 @@
+		<form action="index.php?section=Question" method="POST" class="form form-group">
+			<?php if(isset($answererr)){echo "<div class='m-1 p-1 bold h5 alert-danger text-center'>".$answererr.'</div>';} ?>
+			<?php if(isset($good)){echo "<div class='m-1 p-2 bold h5 alert-success text-center'>".$good.'</div>';} ?>
+			<div class="card">
+				<div class="card-header">
+					<h5 class="bold"><?php echo $tall1['question'];?></h5>
+				</div>
+				<div class="card-body">
+					<p class="text-center alert-primary">Choose the correct answer!</p>
+					<select class="form-control" name="answer1">
+						<option value="<?php echo $wr1[0];?>"><?php echo $wr1[0];?></option>
+						<option value="<?php echo $wr1[1];?>"><?php echo $wr1[1];?></option>
+						<option value="<?php echo $wr1[2];?>"><?php echo $wr1[2];?></option>
+						<option value="<?php echo $wr1[3];?>"><?php echo $wr1[3];?></option>
+					</select>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-header">
+					<h5 class="bold"><?php echo $tall2['question'];?></h5>
+				</div>
+				<div class="card-body">
+					<p class="text-center alert-primary">Choose the correct answer!</p>
+					<select class="form-control" name="answer2">
+						<option value="<?php echo $wr2[0];?>"><?php echo $wr2[0];?></option>
+						<option value="<?php echo $wr2[1];?>"><?php echo $wr2[1];?></option>
+						<option value="<?php echo $wr2[2];?>"><?php echo $wr2[2];?></option>
+						<option value="<?php echo $wr2[3];?>"><?php echo $wr2[3];?></option>
+					</select>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-header">
+					<h5 class="bold"><?php echo $tall3['question'];?></h5>
+				</div>
+				<div class="card-body">
+					<p class="text-center alert-primary">Choose the correct answer!</p>
+					<select class="form-control" name="answer3">
+						<option value="<?php echo $wr3[0];?>"><?php echo $wr3[0];?></option>
+						<option value="<?php echo $wr3[1];?>"><?php echo $wr3[1];?></option>
+						<option value="<?php echo $wr3[2];?>"><?php echo $wr3[2];?></option>
+						<option value="<?php echo $wr3[3];?>"><?php echo $wr3[3];?></option>
+					</select>
+				</div>
+			</div>
+			<button name="submit" class="btn btn-info form-control mb-5">Submit</button>
+		</form>

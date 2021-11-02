@@ -1,0 +1,13 @@
+        <div class="alert-light m-3 p-1 main">
+             <ul class="list-group p-1">
+              <a href="index.php?section=Ladder" class="list-group-item list-group-item-action list-group-item-primary"><i class="h4 icofont-spinner-alt-1"></i>  Ladder</a>
+              <a href="index.php?section=Challenge" class="list-group-item list-group-item-action list-group-item-danger"><i class="h4 icofont-puzzle"></i>  Challenge
+              <?php if($noti_ch!=null){ ?><span class="bg-danger"><?php echo $noti_ch;?></span><?php } ?></a>
+              <?php if($_SESSION['user']=="iamadmin"){ ?>
+              <a href="index.php?section=Add_quiz" class="list-group-item list-group-item-action list-group-item-secondary">Add Quiz</a>
+              <?php } ?>
+              <a href="index.php?section=Inbox" class="list-group-item list-group-item-action list-group-item-warning"><i class="h4 icofont-inbox"></i>  Inbox </a>
+              <a href="index.php?section=SendEmail" class="list-group-item list-group-item-action list-group-item-dark"><i class="h4 icofont-letter"></i>  Send email</a>
+              <a href="index.php?section=Logout" class="list-group-item list-group-item-action list-group-item-info"><i class="h4 icofont-logout"></i>  Logout</a>
+            </ul> 
+        </div>  

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Login page</title>  
+ <title><?php if(!isset($section)){echo "Ladder";}else{echo $section;} ?></title>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+ <meta charset="utf-8">
+ <meta name="Description" content="Scientific contest (Ladder of knowledge)">
+ <meta name="author" content="Yusuf Zamani">
+ <meta http-equiv="refresh" content='50'>
+ <link rel="shortcut icon" type="image/x-icon" href="assets/logo.jpg" />
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="assets/html/mystyle.css">
+<style type="text/css">
+    label{
+        font-weight: bold;
+        color: white;
+    }.err{font-weight: bold;}
+    body{
+        background-image: url("assets/sign.JPG");
+        background-position: left;
+    }
+</style>
+</head>
+<body>
+<div class="container mt-4">
+    <form method="post" accept="sign.php" class="form p-1">
+        <h4 class="text-light text-center"><b>Sign up<b></h4>
+        <label for="name">Name</label><br>
+        <input id="name" class="form-control" type="text" name="name" placeholder="Enter your Name">
+        <label for="lname">Lastname</label><br>
+        <input id="lname" class="form-control" type="text" name="lname" placeholder="Enter your Last Name">
+        <label for="user">Username - <small>min 6</small></label><br>
+        <input id="user" class="form-control" type="text" name="user" placeholder="Enter your Username">
+        <label for="pwd">Password - <small>min 6</small></label><br>
+        <input id="pwd" class="form-control" type="password" name="pwd" placeholder="Enter your Password">
+        <label for="con">Confirm</label><br>
+        <input id="con" class="form-control" type="password" name="cpwd" placeholder="Please Confirm">
+        <?php if(isset($_SESSION['sign'])){echo $_SESSION['sign'];} if (count($err) > 0){foreach($err as $e){echo "<div class='alert-danger err p-1 m-1'>".$e."</div>";}} ?>
+        <button name="submit" class="btn teal btn-primary mt-1">Submit</button>
+        <a class="btn btn-dark mt-1" href="login.php">Login</a>
+    </form>
+</div>
+</body>
+</html>

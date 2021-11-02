@@ -1,0 +1,42 @@
+<ul class="list-group scc">
+				<?php
+					$sendc = "SELECT * FROM challenge WHERE sender='$ip' ORDER BY Cid desc";
+					$seq = $conn->query($sendc);
+					if($seq->num_rows > 0){
+						while($sent = $seq->fetch_assoc()){
+						$chpi = $sent['ch_ip'];
+						$guy = $sent['receiver'];
+						$g = $conn->query("SELECT name FROM user WHERE ip='$guy'");
+						$gf = mysqli_fetch_array($g);
+				?>
+				<li class='list-group-item text-center list-group-item-action'>
+					<form action="index.php?section=Question" method="POST">
+						<button class="btn btn-info btn-sm" name='start' style="float: left;">Start</button>
+						<input type="hidden" value="<?php echo $chpi; ?>" name="ch_ip">
+						<?php echo ' Sent to '.$gf['name']; ?>
+						<span class="bg-warning" style="float: right;">
+						<?php 
+						$seee = "SELECT * FROM score WHERE ch_ip='$chpi' AND ip='$guy'";
+						$seeq = $conn->query($seee);
+						if($seeq->num_rows>0){
+						$winner = "SELECT * FROM result WHERE Cid='$chpi'";
+						$winq = $conn->query($winner);
+						$re = mysqli_fetch_array($winq)['winner'];
+						if($re==$ip){
+							echo 'You won';
+						}else if($re==$guy){
+							echo 'You failed';
+						}else{
+							echo $re;
+						}
+					}else{
+					echo "Answer Pending.";
+				}
+						?>
+						</span>
+					</form>
+				</li>
+			<?php }}else{ ?>
+				<li class='list-group list-group-item-action h5 bold p-2 alert-primary'>Nothing yet</li>
+			<?php } ?>
+			</ul>

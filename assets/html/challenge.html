@@ -1,0 +1,17 @@
+		<form method="POST" action="index.php?section=Challenge" class="form ch m-3 form-group">
+			<div class="text-success alert-success mb-1 bold text-center">Leave empty for a random person<b class="icofont-user-alt-2"></b></div>
+			<input type="text" id="op" name="op" placeholder="Opponent ID" class="form-control mt-2">	
+			<hr>
+				<select name="select" class="custom-select ml-2 alert-warning">
+				    <option value="History">History</option>
+				    <option value="Geography">Geography</option>
+				    <option value="Info">Info</option>
+				</select>
+			<br>
+			<button name="start" class="btn mt-1 btn-info bold form-control">Start</button>
+			</div>
+		</form>
+		<div style="text-align: center;">
+			<a href="index.php?section=Received" class="btn m-1 alert-warning bold btn-sm">Received <?php if($noti_ch!=null){ ?><span class="bg-danger ml-1"><?php echo $noti_ch;?></span><?php } ?></a>
+			<a href="index.php?section=Sent" class="btn m-1 alert-warning bold btn-sm">Sent </a>
+		</div>	
